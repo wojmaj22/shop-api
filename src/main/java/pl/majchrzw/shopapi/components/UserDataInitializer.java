@@ -8,6 +8,7 @@ import pl.majchrzw.shopapi.dao.OrderRepository;
 import pl.majchrzw.shopapi.dao.ProductRepository;
 import pl.majchrzw.shopapi.model.Order;
 import pl.majchrzw.shopapi.model.OrderDetail;
+import pl.majchrzw.shopapi.model.OrderStatus;
 import pl.majchrzw.shopapi.model.Product;
 
 import java.time.Instant;
@@ -36,6 +37,7 @@ public class UserDataInitializer {
 			Product product = Product.builder()
 					.name(faker.commerce().productName())
 					.price(Math.round(random.nextDouble()*10000.0)/100.0)
+					.stockQuantity(random.nextInt(20,100))
 					.build();
 			products.add(product);
 		}
@@ -43,6 +45,7 @@ public class UserDataInitializer {
 			Order order = Order.builder()
 					.user(faker.name().username())
 					.orderDate(Date.from(Instant.now()))
+					.orderStatus(OrderStatus.NEW)
 					.build();
 			orders.add(order);
 		}

@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "orderdetail")
 @Getter
+@EqualsAndHashCode
 @Builder
 @NoArgsConstructor
 public class OrderDetail {

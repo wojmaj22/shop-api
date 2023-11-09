@@ -8,8 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "order")
-@Getter
-@Setter
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,7 +24,12 @@ public class Order {
 	@Column(name = "order_date")
 	private Date orderDate;
 	
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	@Column(name = "status")
+	private OrderStatus orderStatus;
+	
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<OrderDetail> orderDetails;
+	
+	
 }
 

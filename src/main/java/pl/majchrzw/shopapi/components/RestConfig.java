@@ -9,12 +9,14 @@ import pl.majchrzw.shopapi.model.OrderDetail;
 import pl.majchrzw.shopapi.model.Product;
 
 @Component
-public class RestConfig implements RepositoryRestConfigurer {
+public class RestConfig /*implements RepositoryRestConfigurer*/ {
 	
+	/*
 	@Override
 	public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
 		config.exposeIdsFor(Order.class);
 		config.exposeIdsFor(Product.class);
 		config.exposeIdsFor(OrderDetail.class);
 	}
+	 */
 }

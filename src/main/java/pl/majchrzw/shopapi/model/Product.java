@@ -11,8 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "product")
-@Getter
-@Setter
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,7 +29,17 @@ public class Product {
 	@NotNull( message = "Product price must be set")
 	private Double price;
 	
-	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+	@Column(name = "quantity")
+	private Integer stockQuantity;
+	
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<OrderDetail> orderDetails;
+	
+	public Product(Long id, String name, Double price, Integer stockQuantity) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.stockQuantity = stockQuantity;
+	}
 }
 

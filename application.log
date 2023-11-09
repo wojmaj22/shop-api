@@ -1,0 +1,131 @@
+2023-11-08 20:04:34,550 INFO [main] o.s.t.c.s.AnnotationConfigContextLoaderUtils [AnnotationConfigContextLoaderUtils.java:83] - Could not detect default configuration classes for test class [pl.majchrzw.shopapi.ProductRepositoryTests]: ProductRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-11-08 20:04:34,712 INFO [main] o.s.b.t.c.SpringBootTestContextBootstrapper [SpringBootTestContextBootstrapper.java:248] - Found @SpringBootConfiguration pl.majchrzw.shopapi.ShopApiApplication for test class pl.majchrzw.shopapi.ProductRepositoryTests
+2023-11-08 20:04:34,966 INFO [main] o.s.b.d.r.RestartApplicationListener [RestartApplicationListener.java:74] - Restart disabled due to context in which it is running
+2023-11-08 20:04:35,297 INFO [background-preinit] o.h.v.i.u.Version [Version.java:21] - HV000001: Hibernate Validator 8.0.1.Final
+2023-11-08 20:04:35,379 INFO [main] p.m.s.ProductRepositoryTests [StartupInfoLogger.java:51] - Starting ProductRepositoryTests using Java 21.0.1 with PID 18972 (started by wojjm in C:\Users\wojjm\Desktop\Studia\Semestr 2023Z\PAMIW\shop-api)
+2023-11-08 20:04:35,381 INFO [main] p.m.s.ProductRepositoryTests [SpringApplication.java:638] - No active profile set, falling back to 1 default profile: "default"
+2023-11-08 20:04:36,455 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:291] - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-11-08 20:04:36,457 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:138] - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-11-08 20:04:36,497 INFO [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport [RepositoryConfigurationExtensionSupport.java:320] - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface pl.majchrzw.shopapi.dao.OrderDetailRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-11-08 20:04:36,500 INFO [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport [RepositoryConfigurationExtensionSupport.java:320] - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface pl.majchrzw.shopapi.dao.OrderRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-11-08 20:04:36,501 INFO [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport [RepositoryConfigurationExtensionSupport.java:320] - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface pl.majchrzw.shopapi.dao.ProductRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-11-08 20:04:36,502 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:208] - Finished Spring Data repository scanning in 39 ms. Found 0 JDBC repository interfaces.
+2023-11-08 20:04:36,515 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:291] - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-11-08 20:04:36,516 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:138] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-08 20:04:36,553 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:208] - Finished Spring Data repository scanning in 32 ms. Found 3 JPA repository interfaces.
+2023-11-08 20:04:37,160 INFO [main] o.h.j.i.u.LogHelper [LogHelper.java:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-08 20:04:37,289 INFO [main] o.h.Version [Version.java:44] - HHH000412: Hibernate ORM core version 6.2.13.Final
+2023-11-08 20:04:37,292 INFO [main] o.h.c.Environment [Environment.java:191] - HHH000406: Using bytecode reflection optimizer
+2023-11-08 20:04:37,749 INFO [main] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-11-08 20:04:37,784 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:110] - HikariPool-1 - Starting...
+2023-11-08 20:04:38,024 INFO [main] c.z.h.p.HikariPool [HikariPool.java:565] - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@d28c214
+2023-11-08 20:04:38,026 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:123] - HikariPool-1 - Start completed.
+2023-11-08 20:04:38,078 WARN [main] o.h.o.deprecation [DialectFactoryImpl.java:152] - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2023-11-08 20:04:39,221 INFO [main] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:55] - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2023-11-08 20:04:39,249 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:238] - SQL Warning Code: 0, SQLState: 00000
+2023-11-08 20:04:39,250 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:239] - relation "orderdetail" does not exist, skipping
+2023-11-08 20:04:39,250 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:238] - SQL Warning Code: 0, SQLState: 00000
+2023-11-08 20:04:39,250 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:239] - relation "orderdetail" does not exist, skipping
+2023-11-08 20:04:39,252 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:238] - SQL Warning Code: 0, SQLState: 00000
+2023-11-08 20:04:39,253 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:239] - table "order" does not exist, skipping
+2023-11-08 20:04:39,253 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:238] - SQL Warning Code: 0, SQLState: 00000
+2023-11-08 20:04:39,254 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:239] - table "orderdetail" does not exist, skipping
+2023-11-08 20:04:39,254 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:238] - SQL Warning Code: 0, SQLState: 00000
+2023-11-08 20:04:39,254 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:239] - table "product" does not exist, skipping
+2023-11-08 20:04:39,302 INFO [main] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-08 20:04:40,269 WARN [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:231] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-08 20:04:41,203 INFO [main] p.m.s.ProductRepositoryTests [StartupInfoLogger.java:57] - Started ProductRepositoryTests in 6.251 seconds (process running for 7.962)
+2023-11-08 20:04:41,722 INFO [main] p.m.s.ProductRepositoryTests [ProductRepositoryTests.java:36] - Testing database for create
+2023-11-08 20:04:41,968 INFO [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-08 20:04:41,985 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:350] - HikariPool-1 - Shutdown initiated...
+2023-11-08 20:04:41,989 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:352] - HikariPool-1 - Shutdown completed.
+2023-11-08 20:05:41,587 INFO [main] o.s.t.c.s.AnnotationConfigContextLoaderUtils [AnnotationConfigContextLoaderUtils.java:83] - Could not detect default configuration classes for test class [pl.majchrzw.shopapi.ProductRepositoryTests]: ProductRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-11-08 20:05:41,752 INFO [main] o.s.b.t.c.SpringBootTestContextBootstrapper [SpringBootTestContextBootstrapper.java:248] - Found @SpringBootConfiguration pl.majchrzw.shopapi.ShopApiApplication for test class pl.majchrzw.shopapi.ProductRepositoryTests
+2023-11-08 20:05:41,989 INFO [main] o.s.b.d.r.RestartApplicationListener [RestartApplicationListener.java:74] - Restart disabled due to context in which it is running
+2023-11-08 20:05:42,264 INFO [background-preinit] o.h.v.i.u.Version [Version.java:21] - HV000001: Hibernate Validator 8.0.1.Final
+2023-11-08 20:05:42,288 INFO [main] p.m.s.ProductRepositoryTests [StartupInfoLogger.java:51] - Starting ProductRepositoryTests using Java 21.0.1 with PID 20512 (started by wojjm in C:\Users\wojjm\Desktop\Studia\Semestr 2023Z\PAMIW\shop-api)
+2023-11-08 20:05:42,289 INFO [main] p.m.s.ProductRepositoryTests [SpringApplication.java:638] - No active profile set, falling back to 1 default profile: "default"
+2023-11-08 20:05:43,110 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:291] - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-11-08 20:05:43,111 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:138] - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-11-08 20:05:43,162 INFO [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport [RepositoryConfigurationExtensionSupport.java:320] - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface pl.majchrzw.shopapi.dao.OrderDetailRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-11-08 20:05:43,165 INFO [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport [RepositoryConfigurationExtensionSupport.java:320] - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface pl.majchrzw.shopapi.dao.OrderRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-11-08 20:05:43,167 INFO [main] o.s.d.r.c.RepositoryConfigurationExtensionSupport [RepositoryConfigurationExtensionSupport.java:320] - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface pl.majchrzw.shopapi.dao.ProductRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-11-08 20:05:43,168 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:208] - Finished Spring Data repository scanning in 51 ms. Found 0 JDBC repository interfaces.
+2023-11-08 20:05:43,182 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:291] - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-11-08 20:05:43,183 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:138] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-08 20:05:43,221 INFO [main] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:208] - Finished Spring Data repository scanning in 33 ms. Found 3 JPA repository interfaces.
+2023-11-08 20:05:43,838 INFO [main] o.h.j.i.u.LogHelper [LogHelper.java:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-08 20:05:43,973 INFO [main] o.h.Version [Version.java:44] - HHH000412: Hibernate ORM core version 6.2.13.Final
+2023-11-08 20:05:43,977 INFO [main] o.h.c.Environment [Environment.java:191] - HHH000406: Using bytecode reflection optimizer
+2023-11-08 20:05:44,417 INFO [main] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-11-08 20:05:44,455 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:110] - HikariPool-1 - Starting...
+2023-11-08 20:05:44,693 INFO [main] c.z.h.p.HikariPool [HikariPool.java:565] - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@619c3546
+2023-11-08 20:05:44,699 INFO [main] c.z.h.HikariDataSource [HikariDataSource.java:123] - HikariPool-1 - Start completed.
+2023-11-08 20:05:44,732 WARN [main] o.h.o.deprecation [DialectFactoryImpl.java:152] - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2023-11-08 20:05:46,024 INFO [main] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:55] - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2023-11-08 20:05:46,049 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:238] - SQL Warning Code: 0, SQLState: 00000
+2023-11-08 20:05:46,049 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:239] - relation "orderdetail" does not exist, skipping
+2023-11-08 20:05:46,050 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:238] - SQL Warning Code: 0, SQLState: 00000
+2023-11-08 20:05:46,050 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:239] - relation "orderdetail" does not exist, skipping
+2023-11-08 20:05:46,052 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:238] - SQL Warning Code: 0, SQLState: 00000
+2023-11-08 20:05:46,052 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:239] - table "order" does not exist, skipping
+2023-11-08 20:05:46,053 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:238] - SQL Warning Code: 0, SQLState: 00000
+2023-11-08 20:05:46,053 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:239] - table "orderdetail" does not exist, skipping
+2023-11-08 20:05:46,053 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:238] - SQL Warning Code: 0, SQLState: 00000
+2023-11-08 20:05:46,054 WARN [main] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:239] - table "product" does not exist, skipping
+2023-11-08 20:05:46,086 INFO [main] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-08 20:05:47,060 WARN [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:231] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-08 20:05:47,929 INFO [main] p.m.s.ProductRepositoryTests [StartupInfoLogger.java:57] - Started ProductRepositoryTests in 5.959 seconds (process running for 7.549)
+2023-11-08 20:05:48,681 INFO [main] p.m.s.ProductRepositoryTests [ProductRepositoryTests.java:36] - Testing database for create
+2023-11-08 20:05:48,688 INFO [main] p.m.s.ProductRepositoryTests [ProductRepositoryTests.java:43] - Create test successful
+2023-11-08 20:05:49,040 INFO [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-08 20:05:49,059 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:350] - HikariPool-1 - Shutdown initiated...
+2023-11-08 20:05:49,069 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:352] - HikariPool-1 - Shutdown completed.
+2023-11-09 12:35:35,774 INFO [background-preinit] o.h.v.i.u.Version [Version.java:21] - HV000001: Hibernate Validator 8.0.1.Final
+2023-11-09 12:35:35,818 INFO [restartedMain] p.m.s.ShopApiApplication [StartupInfoLogger.java:51] - Starting ShopApiApplication using Java 21.0.1 with PID 31352 (C:\Users\wojjm\Desktop\Studia\Semestr 2023Z\PAMIW\shop-api\target\classes started by wojjm in C:\Users\wojjm\Desktop\Studia\Semestr 2023Z\PAMIW\shop-api)
+2023-11-09 12:35:35,820 INFO [restartedMain] p.m.s.ShopApiApplication [SpringApplication.java:638] - No active profile set, falling back to 1 default profile: "default"
+2023-11-09 12:35:35,867 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java:250] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-11-09 12:35:35,867 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java:250] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-11-09 12:35:36,752 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:291] - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-11-09 12:35:36,754 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:138] - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-11-09 12:35:36,793 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport [RepositoryConfigurationExtensionSupport.java:320] - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface pl.majchrzw.shopapi.dao.OrderDetailRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-11-09 12:35:36,795 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport [RepositoryConfigurationExtensionSupport.java:320] - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface pl.majchrzw.shopapi.dao.OrderRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-11-09 12:35:36,797 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationExtensionSupport [RepositoryConfigurationExtensionSupport.java:320] - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface pl.majchrzw.shopapi.dao.ProductRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-11-09 12:35:36,797 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:208] - Finished Spring Data repository scanning in 36 ms. Found 0 JDBC repository interfaces.
+2023-11-09 12:35:36,809 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:291] - Multiple Spring Data modules found, entering strict repository configuration mode
+2023-11-09 12:35:36,810 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:138] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-11-09 12:35:36,840 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java:208] - Finished Spring Data repository scanning in 27 ms. Found 3 JPA repository interfaces.
+2023-11-09 12:35:37,603 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:108] - Tomcat initialized with port(s): 8081 (http)
+2023-11-09 12:35:37,616 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] - Initializing ProtocolHandler ["http-nio-8081"]
+2023-11-09 12:35:37,619 INFO [restartedMain] o.a.c.c.StandardService [DirectJDKLog.java:173] - Starting service [Tomcat]
+2023-11-09 12:35:37,619 INFO [restartedMain] o.a.c.c.StandardEngine [DirectJDKLog.java:173] - Starting Servlet engine: [Apache Tomcat/10.1.15]
+2023-11-09 12:35:37,691 INFO [restartedMain] o.a.c.c.C.[.[.[/] [DirectJDKLog.java:173] - Initializing Spring embedded WebApplicationContext
+2023-11-09 12:35:37,693 INFO [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext [ServletWebServerApplicationContext.java:291] - Root WebApplicationContext: initialization completed in 1825 ms
+2023-11-09 12:35:37,862 INFO [restartedMain] o.h.j.i.u.LogHelper [LogHelper.java:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-11-09 12:35:37,967 INFO [restartedMain] o.h.Version [Version.java:44] - HHH000412: Hibernate ORM core version 6.2.13.Final
+2023-11-09 12:35:37,970 INFO [restartedMain] o.h.c.Environment [Environment.java:191] - HHH000406: Using bytecode reflection optimizer
+2023-11-09 12:35:38,305 INFO [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo [SpringPersistenceUnitInfo.java:87] - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-11-09 12:35:38,333 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:110] - HikariPool-1 - Starting...
+2023-11-09 12:35:38,547 INFO [restartedMain] c.z.h.p.HikariPool [HikariPool.java:565] - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@56693c58
+2023-11-09 12:35:38,550 INFO [restartedMain] c.z.h.HikariDataSource [HikariDataSource.java:123] - HikariPool-1 - Start completed.
+2023-11-09 12:35:38,640 WARN [restartedMain] o.h.o.deprecation [DialectFactoryImpl.java:152] - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2023-11-09 12:35:39,770 INFO [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator [JtaPlatformInitiator.java:55] - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2023-11-09 12:35:39,795 WARN [restartedMain] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:238] - SQL Warning Code: 0, SQLState: 00000
+2023-11-09 12:35:39,795 WARN [restartedMain] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:239] - relation "orderdetail" does not exist, skipping
+2023-11-09 12:35:39,796 WARN [restartedMain] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:238] - SQL Warning Code: 0, SQLState: 00000
+2023-11-09 12:35:39,796 WARN [restartedMain] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:239] - relation "orderdetail" does not exist, skipping
+2023-11-09 12:35:39,798 WARN [restartedMain] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:238] - SQL Warning Code: 0, SQLState: 00000
+2023-11-09 12:35:39,798 WARN [restartedMain] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:239] - table "order" does not exist, skipping
+2023-11-09 12:35:39,799 WARN [restartedMain] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:238] - SQL Warning Code: 0, SQLState: 00000
+2023-11-09 12:35:39,799 WARN [restartedMain] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:239] - table "orderdetail" does not exist, skipping
+2023-11-09 12:35:39,800 WARN [restartedMain] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:238] - SQL Warning Code: 0, SQLState: 00000
+2023-11-09 12:35:39,800 WARN [restartedMain] o.h.e.j.s.SqlExceptionHelper [SqlExceptionHelper.java:239] - table "product" does not exist, skipping
+2023-11-09 12:35:39,855 INFO [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:437] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-11-09 12:35:40,578 WARN [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [JpaBaseConfiguration.java:231] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-11-09 12:35:41,345 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java:59] - LiveReload server is running on port 35729
+2023-11-09 12:35:41,364 INFO [restartedMain] o.a.c.h.Http11NioProtocol [DirectJDKLog.java:173] - Starting ProtocolHandler ["http-nio-8081"]
+2023-11-09 12:35:41,386 INFO [restartedMain] o.s.b.w.e.t.TomcatWebServer [TomcatWebServer.java:220] - Tomcat started on port(s): 8081 (http) with context path ''
+2023-11-09 12:35:41,395 INFO [restartedMain] p.m.s.ShopApiApplication [StartupInfoLogger.java:57] - Started ShopApiApplication in 6.058 seconds (process running for 7.224)
+2023-11-09 12:36:02,607 INFO [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean [AbstractEntityManagerFactoryBean.java:650] - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-09 12:36:02,640 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:350] - HikariPool-1 - Shutdown initiated...
+2023-11-09 12:36:02,647 INFO [SpringApplicationShutdownHook] c.z.h.HikariDataSource [HikariDataSource.java:352] - HikariPool-1 - Shutdown completed.

@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "user": "jan.kowalski",
+    "orderDate": "2023-11-08T14:30:00",
+    "orderStatus": "NEW",
+    "orderDetailsList": [101, 102, 103]
+  },
+  {
+    "id": 2,
+    "user": "anna.nowak",
+    "orderDate": "2023-11-09T10:15:00",
+    "orderStatus": "CLOSED",
+    "orderDetailsList": [201, 202]
+  },
+  {
+    "id": 3,
+    "user": "marek.wisniewski",
+    "orderDate": "2023-11-10T16:45:00",
+    "orderStatus": "NEW",
+    "orderDetailsList": [301]
+  }
+]
