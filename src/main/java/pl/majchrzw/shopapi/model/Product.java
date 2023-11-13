@@ -1,5 +1,7 @@
 package pl.majchrzw.shopapi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -33,6 +35,8 @@ public class Product {
 	private Integer stockQuantity;
 	
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonBackReference
+	@JsonIgnore
 	private List<OrderDetail> orderDetails;
 	
 	public Product(Long id, String name, Double price, Integer stockQuantity) {

@@ -1,5 +1,5 @@
 <configuration>
-    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <file>application.log</file> <!-- Nazwa pliku logów -->
         <encoder>
             <pattern>%date %level [%thread] %logger{10} [%file:%line] - %msg%n</pattern> <!-- Format logów -->
@@ -7,6 +7,6 @@
     </appender>
 
     <root level="info">
-        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
     </root>
 </configuration>

@@ -1,5 +1,6 @@
 package pl.majchrzw.shopapi.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import jakarta.persistence.*;
@@ -28,8 +29,13 @@ public class Order {
 	private OrderStatus orderStatus;
 	
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonManagedReference
 	private List<OrderDetail> orderDetails;
 	
-	
+	public Order(String user, Date orderDate) {
+		this.user = user;
+		this.orderDate = orderDate;
+		this.orderStatus = OrderStatus.NEW;
+	}
 }
 

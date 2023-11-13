@@ -8,11 +8,10 @@ import org.springframework.stereotype.Service;
 import pl.majchrzw.shopapi.dao.OrderDetailRepository;
 import pl.majchrzw.shopapi.dao.OrderRepository;
 import pl.majchrzw.shopapi.dto.OrderDTO;
-import pl.majchrzw.shopapi.model.Order;
-import pl.majchrzw.shopapi.model.OrderDetail;
-import pl.majchrzw.shopapi.model.OrderStatus;
-import pl.majchrzw.shopapi.model.Product;
+import pl.majchrzw.shopapi.model.*;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,7 +31,27 @@ public class OrderService {
 	}
 	
 	public List<Order> getOrdersByUsername(String username){
+		//List<Order> orders = orderRepository.findAllByUser(username);
 		return orderRepository.findAllByUser(username);
+	}
+	
+	public Order getOrderByUsernameAndStatus(String username, OrderStatus status){
+		List<Order> orders = orderRepository.findAllByUserAndOrderStatus(username, status);
+		if( orders.size() == 0){
+			Order order = new Order(username, Date.from(Instant.now()));
+			orderRepository.save(order);
+			return order;
+		} else if ( orders.size() == 1){
+			return orders.get(0);
+		} else {
+			throw new IllegalStateException("Cannot have more than one order with NEW status for user");
+		}
+	}
+	
+	public long checkIfNewOrderExists( List<Order> orders){
+		return orders.stream()
+				.filter(order -> order.getOrderStatus() == OrderStatus.NEW)
+				.count();
 	}
 	
 	public Order getOrderById(Long id){
@@ -131,6 +150,18 @@ public class OrderService {
 	
 	public boolean checkIfClientExists(){
 		return true;
+	}
+	
+	public void saveNewOrder(PostOrderRequestBody requestBody){
+		Order order = new Order();
+		order.setUser(requestBody.getUser());
+		order.setOrderDate(requestBody.getOrderDate());
+		if ( requestBody.getOrderStatus() != null) {
+			order.setOrderStatus(requestBody.getOrderStatus());
+		} else {
+			order.setOrderStatus(OrderStatus.NEW);
+		}
+		orderRepository.save(order);
 	}
 	
 	public void saveOrder(Order order){

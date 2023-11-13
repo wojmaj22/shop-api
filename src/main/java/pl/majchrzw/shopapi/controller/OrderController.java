@@ -4,9 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.majchrzw.shopapi.model.AddToCartRequestBody;
-import pl.majchrzw.shopapi.model.Order;
-import pl.majchrzw.shopapi.model.OrderDetail;
+import pl.majchrzw.shopapi.model.*;
 import pl.majchrzw.shopapi.service.OrderDetailService;
 import pl.majchrzw.shopapi.service.OrderService;
 
@@ -20,9 +18,9 @@ public class OrderController {
 	private final OrderService orderService;
 	private final OrderDetailService orderDetailService;
 	
-	@GetMapping("/{username}")
-	public List<Order> getOrderByUsername(@PathVariable String username){
-		return orderService.getOrdersByUsername(username);
+	@GetMapping()
+	public Order getCurrentOrderByUsernameAndStatus(@RequestParam String username, @RequestParam OrderStatus orderStatus){
+		return orderService.getOrderByUsernameAndStatus(username, orderStatus);
 	}
 	
 	@GetMapping("/{id}")
@@ -36,14 +34,15 @@ public class OrderController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<String> postOrder(@RequestBody Order order){
-		orderService.saveOrder(order);
+	public ResponseEntity<String> postOrder(@RequestBody PostOrderRequestBody requestBody){
+		orderService.saveNewOrder(requestBody);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
-	@PostMapping("/{id}")
+	@PostMapping("/{id}/products")
 	public ResponseEntity<String> postProductToOrder(@PathVariable Long id, @RequestBody AddToCartRequestBody body){
-		// TODO - w body ma byc produkt i ma być nowy OrderDetail lub edytowany jeżeli jeden już istnieje
+		// id - to jest id orderu
+		orderService.addProductToOrder(orderService.getOrderById(id), body.getId(),body.getQuantity());
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
@@ -59,22 +58,6 @@ public class OrderController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	/* TODO - notatki do zrobienia
-	do shop-api
 
-Stworzyć usera jakoś?
-
-- tworzyć koszyk ze statusem new
-- dodajesz produkt do koszyka - nowe order detail i quantity
-- jeżel aktualizujesz ilość to trzeba sprawdzić czy coś już jest w koszyku
-- przy checkoucie sprawdzasz czy wystarczy produktu
-- dajesz status na inny
-- zmieniasz stan
-- jak anulowane to dodajesz ilość do stanu produktu i zmieniasz status zamówienia na canceled
-
-dodać endpoint do checkoutu oraz do cancellowania
-endpoint do dodawania produktu do koszyka
-	 */
-	
 	
 }

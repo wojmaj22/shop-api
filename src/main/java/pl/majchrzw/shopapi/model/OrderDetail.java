@@ -1,5 +1,8 @@
 package pl.majchrzw.shopapi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import jakarta.persistence.*;
@@ -18,10 +21,12 @@ public class OrderDetail {
 	
 	@ManyToOne
 	@JoinColumn(name = "order_id")
+	@JsonBackReference
 	private Order order;
 	
 	@ManyToOne
 	@JoinColumn(name = "product_id")
+	@JsonManagedReference
 	private Product product;
 	
 	@Column(name = "quantity")
