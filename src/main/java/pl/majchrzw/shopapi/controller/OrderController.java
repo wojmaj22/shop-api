@@ -16,7 +16,6 @@ import java.util.List;
 public class OrderController {
 	
 	private final OrderService orderService;
-	private final OrderDetailService orderDetailService;
 	
 	@GetMapping()
 	public Order getCurrentOrderByUsernameAndStatus(@RequestParam String username, @RequestParam OrderStatus orderStatus){

@@ -12,4 +12,6 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 	public List<Order> findAllByUser(String username);
 	
 	public List<Order> findAllByUserAndOrderStatus(String username, OrderStatus orderStatus);
+	
+	public boolean existsByUserAndOrderStatus(String username, OrderStatus orderStatus);
 }

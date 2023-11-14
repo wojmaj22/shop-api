@@ -133,6 +133,7 @@ public class OrderService {
 		return true;
 	}
 	
+	/*
 	public void cancelOrderAndResetQuantity(Order order){
 		if( order.getOrderStatus() == OrderStatus.NEW){
 			throw new IllegalStateException("Cannot Reset quantity on new order");
@@ -143,6 +144,7 @@ public class OrderService {
 		}
 		order.setOrderStatus(OrderStatus.NEW);
 	}
+	 */
 	
 	public void updateOrderStatusToShipped(Order oder){
 		oder.setOrderStatus(OrderStatus.SHIPPED);
@@ -153,15 +155,19 @@ public class OrderService {
 	}
 	
 	public void saveNewOrder(PostOrderRequestBody requestBody){
-		Order order = new Order();
-		order.setUser(requestBody.getUser());
-		order.setOrderDate(requestBody.getOrderDate());
-		if ( requestBody.getOrderStatus() != null) {
-			order.setOrderStatus(requestBody.getOrderStatus());
+		if ( orderRepository.existsByUserAndOrderStatus(requestBody.getUser(), OrderStatus.NEW)){
+			throw new IllegalStateException("Cannot have more than one order with NEW status for user");
 		} else {
-			order.setOrderStatus(OrderStatus.NEW);
+			Order order = new Order();
+			order.setUser(requestBody.getUser());
+			order.setOrderDate(requestBody.getOrderDate());
+			if (requestBody.getOrderStatus() != null) {
+				order.setOrderStatus(requestBody.getOrderStatus());
+			} else {
+				order.setOrderStatus(OrderStatus.NEW);
+			}
+			orderRepository.save(order);
 		}
-		orderRepository.save(order);
 	}
 	
 	public void saveOrder(Order order){
@@ -172,7 +178,7 @@ public class OrderService {
 		orderRepository.save(order);
 	}
 	
-	public void deleteOrder(Long id){
+	public void deleteOrder(Long id) {
 		orderRepository.deleteById(id);
 	}
 }

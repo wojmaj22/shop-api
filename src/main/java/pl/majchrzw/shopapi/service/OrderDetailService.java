@@ -20,7 +20,9 @@ public class OrderDetailService {
 	private final ProductService productService;
 	
 	public void createOrderDetail(OrderDetail orderDetail){
+		orderDetail.getProduct().setStockQuantity(orderDetail.getProduct().getStockQuantity() - orderDetail.getQuantity());
 		orderDetailRepository.save(orderDetail);
+		
 	}
 	
 	public void updateOrderDetail(Long id, OrderDetail orderDetail){
@@ -59,6 +61,12 @@ public class OrderDetailService {
 	
 	public void updateOrderDetailsQuantity(Long id, Integer quantity){
 		OrderDetail orderDetail = findById(id);
+		Integer quantityToChange = quantity - orderDetail.getQuantity();
+		// jak quantityToChange jest > 0 to znaczy że zwiększamy ilość w zamówienia a zmniejszamy w produkcie, jak < 0 to znaczy że zminejszamy w zamówieniu a zwiekszamy w produkcie.
+		// w produkcie zmieniamy chyba o przeciwnośc tej liczby
+		
+		orderDetail.getProduct().setStockQuantity(orderDetail.getProduct().getStockQuantity()-quantityToChange);
+		
 		orderDetail.setQuantity(quantity);
 		orderDetailRepository.save(orderDetail);
 	}
