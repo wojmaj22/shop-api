@@ -140,7 +140,7 @@ public class ProductControllerSteps extends SpringGlue {
 		Mockito.when(repository.save(productToPost)).thenReturn(productToPost);
 	}
 
-	@Given("user has a page and size")
+	@Given("user has a page, size and sort")
 	public void userHasAPageAndSize() {
 		page = 0;
 		size = 10;
@@ -149,7 +149,7 @@ public class ProductControllerSteps extends SpringGlue {
 		productList.add(productToGet);
 		productList.add(productToGet);
 		productPage = new PageImpl<Product>(productList, PageRequest.of(page, size), productList.size());
-		Mockito.when(repository.findAll(PageRequest.of(page, size))).thenReturn(productPage);
+		Mockito.when(repository.findAll(PageRequest.of(page, size, Sort.by(Sort.Direction.ASC, "id")))).thenReturn(productPage);
 	}
 
 	@When("user makes GET paginated request")

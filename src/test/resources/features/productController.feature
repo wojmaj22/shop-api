@@ -1,7 +1,7 @@
 Feature: User want to use product API
 
   Scenario: User can retrieve product with API
-    Given user has a page and size
+    Given user has a page, size and sort
     When user makes GET paginated request
     Then system returns success status
     And system returns list of products data
