@@ -1,5 +1,6 @@
 package pl.majchrzw.shopapi.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +34,7 @@ public class OrderController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<String> postOrder(@RequestBody PostOrderRequestBody requestBody){
+	public ResponseEntity<String> postOrder(@RequestBody @Valid PostOrderRequestBody requestBody){
 		orderService.saveNewOrder(requestBody);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
@@ -52,7 +53,7 @@ public class OrderController {
 	}
 	
 	@PutMapping
-	public ResponseEntity<String> putOrder(@RequestBody Order order){
+	public ResponseEntity<String> putOrder(@RequestBody @Valid Order order){
 		orderService.saveOrder(order);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
