@@ -1,6 +1,7 @@
 package pl.majchrzw.shopapi.bdd.steps;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -15,21 +16,25 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import pl.majchrzw.shopapi.bdd.tooling.SpringGlue;
+import pl.majchrzw.shopapi.dao.OrderRepository;
 import pl.majchrzw.shopapi.dao.ProductRepository;
+import pl.majchrzw.shopapi.model.Order;
 import pl.majchrzw.shopapi.model.Product;
 import pl.majchrzw.shopapi.service.ProductService;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 public class ProductControllerSteps extends SpringGlue {
-	
+
 	long productId;
 	long badProductId;
 	int page;
@@ -39,18 +44,18 @@ public class ProductControllerSteps extends SpringGlue {
 	Page<Product> productPage;
 	Product productToPost;
 	ObjectMapper objectMapper = new ObjectMapper();
-	
+
 	@Autowired
 	MockMvc mockMvc;
-	
+
 	@Autowired
 	ProductService service;
-	
+
 	@Autowired
 	@MockBean
 	ProductRepository repository;
 	private ResultActions Result;
-	
+
 	@Given("user has a valid product id")
 	public void user_has_a_valid_product_id() {
 		productId = 1L;
@@ -58,22 +63,24 @@ public class ProductControllerSteps extends SpringGlue {
 		productToGet.setId(productId);
 		Mockito.when(repository.findById(productId)).thenReturn(Optional.of(productToGet));
 	}
+
 	@When("user makes GET request")
 	public void user_makes_get_request() throws Exception {
-		Result = mockMvc.perform(MockMvcRequestBuilders.get("/api/products/"+productId).accept(MediaType.APPLICATION_JSON_VALUE));
+		Result = mockMvc.perform(MockMvcRequestBuilders.get("/api/products/" + productId).accept(MediaType.APPLICATION_JSON_VALUE));
 	}
+
 	@Then("system returns product data")
 	public void system_returns_product_data() throws Exception {
 		String jsonContentExpected = objectMapper.writeValueAsString(productToGet);
 		Result.andExpect(content().json(jsonContentExpected));
 	}
-	
+
 	@Given("user has a valid product data")
 	public void userHasAValidProductData() {
 		productToPost = new Product(2L, "Test", 34.56, 88);
 		Mockito.when(repository.save(productToPost)).thenReturn(productToPost);
 	}
-	
+
 	@When("user makes POST request")
 	public void userMakesPOSTRequest() throws Exception {
 		String content = objectMapper.writeValueAsString(productToPost);
@@ -111,7 +118,7 @@ public class ProductControllerSteps extends SpringGlue {
 
 	@When("user makes bad GET request")
 	public void userMakesBadGETRequest() throws Exception {
-		Result = mockMvc.perform(MockMvcRequestBuilders.get("/api/products/"+badProductId).accept(MediaType.APPLICATION_JSON_VALUE));
+		Result = mockMvc.perform(MockMvcRequestBuilders.get("/api/products/" + badProductId).accept(MediaType.APPLICATION_JSON_VALUE));
 	}
 
 	@Given("user has an invalid product id")
@@ -147,7 +154,7 @@ public class ProductControllerSteps extends SpringGlue {
 
 	@When("user makes GET paginated request")
 	public void userMakesGETPaginatedRequest() throws Exception {
-		Result = mockMvc.perform(MockMvcRequestBuilders.get("/api/products?"+"page="+page+"&size="+size).accept(MediaType.APPLICATION_JSON_VALUE));
+		Result = mockMvc.perform(MockMvcRequestBuilders.get("/api/products?" + "page=" + page + "&size=" + size).accept(MediaType.APPLICATION_JSON_VALUE));
 	}
 
 	@Then("system returns list of products data")
@@ -156,3 +163,4 @@ public class ProductControllerSteps extends SpringGlue {
 		Result.andExpect(content().json(jsonContentExpected));
 	}
 }
+

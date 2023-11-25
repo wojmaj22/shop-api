@@ -181,12 +181,20 @@ public class OrderService {
 	public void saveOrder(Order order){
 		orderRepository.save(order);
 	}
-	
+
 	public void updateOrder(Order order){
-		orderRepository.save(order);
+		if(orderRepository.existsById(order.getId())){
+			orderRepository.save(order);
+		} else {
+			throw new EntityNotFoundException("No product with id: " + order.getId() + ", has been found.");
+		}
 	}
-	
+
 	public void deleteOrder(Long id) {
-		orderRepository.deleteById(id);
+		if(orderRepository.existsById(id)){
+			orderRepository.deleteById(id);
+		} else {
+			throw new EntityNotFoundException("No product with id: " + id + ", has been found.");
+		}
 	}
 }
