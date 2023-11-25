@@ -28,7 +28,7 @@ public class Order {
 	@Column(name = "status")
 	private OrderStatus orderStatus;
 	
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonManagedReference
 	private List<OrderDetail> orderDetails;
 	

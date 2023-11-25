@@ -26,7 +26,6 @@ public class OrderService {
 	private final ProductService productService;
 	
 	public Page<Order> getOrders(Pageable pageable){
-		// TODO - might not work as intended
 		return orderRepository.findAll(pageable);
 	}
 	
@@ -91,7 +90,11 @@ public class OrderService {
 			
 			orderDetailService.createOrderDetail(orderDetail);
 		} else {
-			orderDetailService.updateOrderDetailsQuantity(orderDetailId, quantity);
+			if ( quantity == 0){
+				orderDetailService.deleteOrderDetail(orderDetailId);
+			} else {
+				orderDetailService.updateOrderDetailsQuantity(orderDetailId, quantity);
+			}
 		}
 	}
 	
@@ -99,6 +102,11 @@ public class OrderService {
 		Order order = getOrderById(id);
 		order.getOrderDetails().add(orderDetail);
 		orderRepository.save(order);
+	}
+	
+	public void deleteOrderDetailFromOrder(long orderId, long productId){
+		Long orderDetailId = checkIfProductAlreadyExistsInOrder(getOrderById(orderId),productId);
+		orderDetailService.deleteOrderDetail(orderDetailId);
 	}
 	
 	public Order convertFromDTO( OrderDTO dto){

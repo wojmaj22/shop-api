@@ -1,6 +1,9 @@
 package pl.majchrzw.shopapi.service;
 
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.Query;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.majchrzw.shopapi.dao.OrderDetailRepository;
@@ -19,6 +22,8 @@ public class OrderDetailService {
 	private final OrderDetailRepository orderDetailRepository;
 	private final ProductService productService;
 	
+	private final EntityManager entityManager;
+	
 	public void createOrderDetail(OrderDetail orderDetail){
 		orderDetail.getProduct().setStockQuantity(orderDetail.getProduct().getStockQuantity() - orderDetail.getQuantity());
 		orderDetailRepository.save(orderDetail);
@@ -33,8 +38,12 @@ public class OrderDetailService {
 		}
 	}
 	
+	@Transactional
 	public void deleteOrderDetail(Long id){
-		orderDetailRepository.deleteById(id);
+		//orderDetailRepository.deleteById(id);
+		Query query = entityManager.createQuery("delete from OrderDetail o where o.id = :id");
+		query.setParameter("id", id);
+		query.executeUpdate();
 	}
 	
 	public OrderDetail createOrderDetailAndAddToCart(AddToCartRequestBody request){

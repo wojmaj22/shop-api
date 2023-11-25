@@ -19,7 +19,7 @@ public class OrderDetail {
 	@Column(name = "id")
 	private Long id;
 	
-	@ManyToOne
+	@ManyToOne( cascade = CascadeType.DETACH)
 	@JoinColumn(name = "order_id")
 	@JsonBackReference
 	private Order order;

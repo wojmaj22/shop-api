@@ -3,6 +3,7 @@ package pl.majchrzw.shopapi.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,14 +14,20 @@ import java.util.Optional;
 
 @RestController()
 @RequestMapping("/api/products")
-@RequiredArgsConstructor
+@RequiredArgsConstructor    
 public class ProductController {
 	
 	private final ProductService productService;
 	
 	@GetMapping
-	public Page<Product> getProductsPaginated(@RequestParam Optional<Integer> page, @RequestParam Optional<Integer> size){
-		return productService.getAllProductsPaginated(PageRequest.of(page.orElse(0),size.orElse(20)));
+	public Page<Product> getProductsPaginated(@RequestParam Optional<Integer> page, @RequestParam Optional<Integer> size, @RequestParam("sort") Optional<String> sortParam){
+		String sort = sortParam.orElse("id,asc");
+		String[] _sort = sort.split(",");
+		if (_sort[1].equals("desc")){
+			return productService.getAllProductsPaginated(PageRequest.of(page.orElse(0),size.orElse(20), Sort.by(Sort.Direction.DESC,_sort[0])));
+		} else {
+			return productService.getAllProductsPaginated(PageRequest.of(page.orElse(0),size.orElse(20), Sort.by(Sort.Direction.ASC, _sort[0])));
+		}
 	}
 	
 	@GetMapping("/{id}")
