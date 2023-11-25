@@ -36,7 +36,11 @@ public class ProductService {
 	}
 	
 	public void deleteProduct(Long id){
-		productRepository.deleteById(id);
+		if(productRepository.existsById(id)){
+			productRepository.deleteById(id);
+		} else {
+			throw new EntityNotFoundException("No product with id: " + id + ", has been found.");
+		}
 	}
 	
 	public void updateProduct(Long id, Product product){

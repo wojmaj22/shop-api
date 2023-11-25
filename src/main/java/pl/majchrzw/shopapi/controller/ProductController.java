@@ -1,5 +1,6 @@
 package pl.majchrzw.shopapi.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -36,19 +37,19 @@ public class ProductController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<String> postProduct(@RequestBody Product product){
+	public ResponseEntity<String> postProduct(@RequestBody @Valid Product product){
 		productService.createProduct(product);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	@PutMapping
-	public ResponseEntity<String> putProduct(@RequestBody Product product){
+	public ResponseEntity<String> putProduct(@RequestBody @Valid Product product){
 		productService.createProduct(product);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@PatchMapping
-	public ResponseEntity<String> patchProduct(@RequestBody Product product){
+	public ResponseEntity<String> patchProduct(@RequestBody @Valid Product product){
 		productService.patchProduct();
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
