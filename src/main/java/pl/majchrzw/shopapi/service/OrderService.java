@@ -11,10 +11,7 @@ import pl.majchrzw.shopapi.dto.OrderDTO;
 import pl.majchrzw.shopapi.model.*;
 
 import java.time.Instant;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -162,7 +159,7 @@ public class OrderService {
 		return true;
 	}
 	
-	public void saveNewOrder(PostOrderRequestBody requestBody){
+	public Order saveNewOrder(PostOrderRequestBody requestBody){
 		if ( orderRepository.existsByUserAndOrderStatus(requestBody.getUser(), OrderStatus.NEW)){
 			throw new IllegalStateException("Cannot have more than one order with NEW status for user");
 		} else {
@@ -174,7 +171,14 @@ public class OrderService {
 			} else {
 				order.setOrderStatus(OrderStatus.NEW);
 			}
-			orderRepository.save(order);
+			order = orderRepository.save(order);
+			if ( requestBody.getItems() != null){
+				order.setOrderDetails(new ArrayList<>());
+				for ( AddToCartRequestBody item: requestBody.getItems()){
+					addProductToOrder(order, item.getId(), item.getQuantity());
+				}
+			}
+			return order;
 		}
 	}
 	

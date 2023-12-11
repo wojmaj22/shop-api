@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import pl.majchrzw.shopapi.dao.OrderDetailRepository;
 import pl.majchrzw.shopapi.dao.ProductRepository;
 import pl.majchrzw.shopapi.model.AddToCartRequestBody;
+import pl.majchrzw.shopapi.model.Order;
 import pl.majchrzw.shopapi.model.OrderDetail;
 import pl.majchrzw.shopapi.model.Product;
 
@@ -46,11 +47,12 @@ public class OrderDetailService {
 		query.executeUpdate();
 	}
 	
-	public OrderDetail createOrderDetailAndAddToCart(AddToCartRequestBody request){
+	public OrderDetail createOrderDetailAndAddToCart(AddToCartRequestBody request, Order order){
 		Product productToAdd = productService.getProductById(request.getId());
 		OrderDetail orderDetail = new OrderDetail();
-		orderDetail.setQuantity(request.getQuantity());
 		orderDetail.setProduct(productToAdd);
+		orderDetail.setQuantity(request.getQuantity());
+		orderDetail.setOrder(order);
 		
 		return orderDetailRepository.save(orderDetail);
 	}

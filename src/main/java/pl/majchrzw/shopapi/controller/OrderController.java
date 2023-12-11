@@ -2,6 +2,9 @@ package pl.majchrzw.shopapi.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +13,7 @@ import pl.majchrzw.shopapi.service.OrderDetailService;
 import pl.majchrzw.shopapi.service.OrderService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController()
 @RequestMapping("/api/orders")
@@ -18,9 +22,16 @@ public class OrderController {
 	
 	private final OrderService orderService;
 	
+	@GetMapping("/byuser")
+	public List<Order> getCurrentOrderByUsernameAndStatus(@RequestParam String username, @RequestParam("status") OrderStatus orderStatus){
+		return List.of(orderService.getOrderByUsernameAndStatus(username, orderStatus));
+	}
+	
 	@GetMapping()
-	public Order getCurrentOrderByUsernameAndStatus(@RequestParam String username, @RequestParam OrderStatus orderStatus){
-		return orderService.getOrderByUsernameAndStatus(username, orderStatus);
+	public Page<Order> getOrdersPaged(@RequestParam Optional<Integer> page, @RequestParam Optional<Integer> size, @RequestParam("sort") Optional<String> sortParam){
+		String sort = sortParam.orElse("id,asc");
+		String[] _sort = sort.split(",");
+		return orderService.getOrders(PageRequest.of(page.orElse(0), size.orElse(20), Sort.by(Sort.Direction.DESC,_sort[0])));
 	}
 	
 	@GetMapping("/{id}")
@@ -35,8 +46,8 @@ public class OrderController {
 	
 	@PostMapping
 	public ResponseEntity<String> postOrder(@RequestBody @Valid PostOrderRequestBody requestBody){
-		orderService.saveNewOrder(requestBody);
-		return new ResponseEntity<>(HttpStatus.CREATED);
+		Order order = orderService.saveNewOrder(requestBody);
+		return new ResponseEntity<>("{ \"id\":\"" + order.getId() + "\"}",HttpStatus.CREATED);
 	}
 	
 	@PostMapping("/{id}/products")
