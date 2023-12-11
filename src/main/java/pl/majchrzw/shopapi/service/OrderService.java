@@ -165,7 +165,11 @@ public class OrderService {
 		} else {
 			Order order = new Order();
 			order.setUser(requestBody.getUser());
-			order.setOrderDate(requestBody.getOrderDate());
+			if ( requestBody.getOrderDate() != null) {
+				order.setOrderDate(requestBody.getOrderDate());
+			} else {
+				order.setOrderDate(Date.from(Instant.now()));
+			}
 			if (requestBody.getOrderStatus() != null) {
 				order.setOrderStatus(requestBody.getOrderStatus());
 			} else {
